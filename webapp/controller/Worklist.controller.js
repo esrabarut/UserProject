@@ -12,14 +12,14 @@ sap.ui.define([
 
         formatter: formatter,
 
-        
+
         onInit: function () {
             var oViewModel;
 
-            
+
             this._aTableSearchState = [];
 
-            
+
             oViewModel = new JSONModel({
                 worklistTableTitle: this.getResourceBundle().getText("worklistTableTitle"),
                 shareSendEmailSubject: this.getResourceBundle().getText("shareSendEmailWorklistSubject"),
@@ -30,7 +30,7 @@ sap.ui.define([
 
         },
 
-       
+
 
         onACDialog: function () {
             this.oDialog.close();
@@ -41,6 +41,15 @@ sap.ui.define([
         onCreateUser: function () {
             const oUserInformation = this.getModel("model").getProperty("/");
             let oUserInformartionData = {};
+/* 
+            
+            aUsername = [];
+            let aFirst = [];
+            if (aFirst.length > 0 && oSecond.length > 0) {
+
+                aUsername.push(aFirst[1]);
+
+            } */
 
             //oUserInformartionData.Username = oUserInformation.Name[0] + oUserInformation.Surname; 
             oUserInformartionData.Username = oUserInformation.Username;
@@ -61,20 +70,20 @@ sap.ui.define([
         onUpdateUser: function () {
             const oUserInformation = {};
             const oServiceModel = this.getModel();
-			const oJSONModel = this.getModel("model").getProperty("/");
-			const oKey = oServiceModel.createKey("/UserInformationSet", {
-				Username: oJSONModel.Username
-			});
+            const oJSONModel = this.getModel("model").getProperty("/");
+            const oKey = oServiceModel.createKey("/UserInformationSet", {
+                Username: oJSONModel.Username
+            });
             oUserInformation.Username = oJSONModel.Username
             oUserInformation.Name = oJSONModel.Name
-            oUserInformation.Surname  = oJSONModel.Surname
+            oUserInformation.Surname = oJSONModel.Surname
             oUserInformation.Birthdate = oJSONModel.Birthdate
             oUserInformation.Mail = oJSONModel.Mail
 
             this.onUpdate(oKey, oUserInformation, oServiceModel)
-            .then((oResponse) => {})
-            .catch(() => {})
-            .finally(() => {});
+                .then((oResponse) => { })
+                .catch(() => { })
+                .finally(() => { });
 
             this.oDialog.close();
 
@@ -99,13 +108,13 @@ sap.ui.define([
 
 
 
-        
+
         onUpdateFinished: function (oEvent) {
-            
+
             var sTitle,
                 oTable = oEvent.getSource(),
                 iTotalItems = oEvent.getParameter("total");
-            
+
             if (iTotalItems && oTable.getBinding("items").isLengthFinal()) {
                 sTitle = this.getResourceBundle().getText("worklistTableTitleCount", [iTotalItems]);
             } else {
@@ -114,22 +123,22 @@ sap.ui.define([
             this.getModel("worklistView").setProperty("/worklistTableTitle", sTitle);
         },
 
-        
+
         onPress: function (oEvent) {
-            
+
             this._showObject(oEvent.getSource());
         },
 
-        
+
         onNavBack: function () {
-            
+
             history.go(-1);
         },
 
 
         onSearch: function (oEvent) {
             if (oEvent.getParameters().refreshButtonPressed) {
-                
+
                 this.onRefresh();
             } else {
                 var aTableSearchState = [];
@@ -143,21 +152,21 @@ sap.ui.define([
 
         },
 
-        
+
         onRefresh: function () {
             var oTable = this.byId("table");
             oTable.getBinding("items").refresh();
         },
         onPressDelete: function () {
             const oModel = this.getModel("model").getProperty("/");
-			const oKey = this.getModel().createKey("/UserInformationSet", {
-				Username : oModel.Username 
-			});
+            const oKey = this.getModel().createKey("/UserInformationSet", {
+                Username: oModel.Username
+            });
 
-			this.onDelete(oKey, this.getModel())
-				.then(() => {})
-				.catch(() => {})
-				.finally(() => {});
+            this.onDelete(oKey, this.getModel())
+                .then(() => { })
+                .catch(() => { })
+                .finally(() => { });
 
             this.oDialog.close();
         },
@@ -169,12 +178,12 @@ sap.ui.define([
             });
         },
 
-       
+
         _applySearch: function (aTableSearchState) {
             var oTable = this.byId("table"),
                 oViewModel = this.getModel("worklistView");
             oTable.getBinding("items").filter(aTableSearchState, "Application");
-            
+
             if (aTableSearchState.length !== 0) {
                 oViewModel.setProperty("/tableNoDataText", this.getResourceBundle().getText("worklistNoDataWithSearchText"));
             }
