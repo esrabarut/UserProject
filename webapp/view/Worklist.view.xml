@@ -41,14 +41,11 @@
                             level="H3"/>
                         <ToolbarSpacer />
                         <SearchField
+                            width="350px"
                             id="searchField"
                             tooltip="{i18n>worklistSearchTooltip}"
                             search=".onSearch">
-                            <layoutData>
-                                <OverflowToolbarLayoutData
-                                    maxWidth="200px"
-                                    priority="NeverOverflow"/>
-                            </layoutData>
+                            
                         </SearchField>
                         <Button text="{i18n>createUser}" press="onShowCreateDialog" icon="sap-icon://add-employee" />
                         <Button text="{i18n>deleteUser}" press="onShowDeleteDialog" icon="sap-icon://delete" />
