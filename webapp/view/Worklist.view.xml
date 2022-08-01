@@ -64,10 +64,10 @@
 
                 <columns>
                     <Column id="usernameColumn">
-                        <Text text="{i18n>username}" id="nameColumnTitle1"/>
+                        <Text text="{i18n>username}" />
                     </Column>
                     <Column id="userColumn">
-                        <Text text="{i18n>name}" id="nameColumnTitle2"/>
+                        <Text text="{i18n>name}" />
                     </Column>
                     <Column id="surnameColumn">
                         <Text text="{i18n>surname}" id="nameColumnTitle3"/>
@@ -92,7 +92,7 @@
                             <ObjectIdentifier title="{path: 'Birthdate', type:'sap.ui.model.type.Date', formatOptions: { UTC:true } }"/>
                             <ObjectIdentifier title="{Mail}"/>  
 
-                            <ObjectNumber />
+                           
                         </cells>
                     </ColumnListItem>
                 </items>

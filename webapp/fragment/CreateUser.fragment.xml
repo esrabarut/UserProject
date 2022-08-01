@@ -6,7 +6,7 @@
                     <core:Title text="{i18n>userInformation}"/>
                     <Label text="{i18n>username}" required="true"/>
                <!-- <Input value="{model>/Name/0}{model>/Surname}" maxLength="12" required="true" enabled="false" valueLiveUpdate="true"/> -->
-                    <Input value="{model>/Username}" maxLength="12" required="true" enabled="true"/>
+                    <Input value="{model>/Username}" maxLength="12" required="true" enabled="true" />
                     <Label text="{i18n>name}"/>
                     <Input value="{model>/Name}" maxLength="40"/>
                     <Label text="{i18n>surname}"/>

@@ -43,13 +43,28 @@ sap.ui.define([
             let oUserInformartionData = {};
 /* 
             
-            aUsername = [];
+          
+            //atamalara ekle
+            
+            
+            */
+           /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      /*       aUsername = [];
             let aFirst = [];
+            let oSecond ;
+            aFirst[1] = this.getModel("model").getProperty("/Name").getIndex(0); 
+            oSecond = this.getModel("model").getProperty("/Surname");
             if (aFirst.length > 0 && oSecond.length > 0) {
 
                 aUsername.push(aFirst[1]);
+                aUsername.push(oSecond);
 
-            } */
+
+            } 
+
+            oUserInformartionData.Username = aUsername; */
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             //oUserInformartionData.Username = oUserInformation.Name[0] + oUserInformation.Surname; 
             oUserInformartionData.Username = oUserInformation.Username;
